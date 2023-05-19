@@ -25,3 +25,20 @@ jobs:
           push: true
           build-args: |
             COMMIT_HASH=${{ github.sha }}
+
+  deploy-docker:
+    runs-on: ubuntu-latest
+    needs:
+      - build-docker
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Login to registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: beeper/docker-retag-push-latest@main
+        with:
+          image: ghcr.io/beeper/maubot-runner

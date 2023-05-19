@@ -5,15 +5,15 @@ user:
         homeserver: "${USER_CREDENTIALS_HOMESERVER}"
         access_token: "${USER_CREDENTIALS_ACCESS_TOKEN}"
         # If you want to enable encryption, set the device ID corresponding to the access token here.
-        device_id: "${USER_CREDENTIALS_DEVICE_ID:-}"
+        device_id: "${USER_CREDENTIALS_DEVICE_ID}"
     # Enable /sync? This is not needed for purely unencrypted webhook-based bots, but is necessary in most other cases.
     sync: true
     # Automatically accept invites?
-    autojoin: false
+    autojoin: ${USER_AUTOJOIN}
     # The displayname and avatar URL to set for the bot on startup.
     # Set to "disable" to not change the the current displayname/avatar.
-    displayname: "${USER_DISPLAYNAME:-Maubot}"
-    avatar_url: "${USER_AVATAR_URL:-mxc://maunium.net/AKwRzQkTbggfVZGEqexbYLIO"
+    displayname: "${USER_DISPLAYNAME}"
+    avatar_url: "${USER_AVATAR_URL}"
 
     # Should events from the initial sync be ignored? This should usually always be true.
     ignore_initial_sync: true

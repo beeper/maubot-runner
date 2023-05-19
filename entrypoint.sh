@@ -12,6 +12,11 @@ else
     git clone $PLUGIN_REPO $PLUGIN_DIR
 fi
 
+export USER_CREDENTIALS_DEVICE_ID="${USER_CREDENTIALS_DEVICE_ID:-}"
+export USER_DISPLAYNAME="${USER_DISPLAYNAME:-Maubot}"
+export USER_AVATAR_URL="${USER_AVATAR_URL:-mxc://maunium.net/AKwRzQkTbggfVZGEqexbYLIO}"
+export USER_AUTOJOIN="${USER_AUTOJOIN:-false}"
+
 envsubst < /opt/beeper/config.tpl.yaml > /data/plugin/config.yaml
 
 cd /data/plugin
